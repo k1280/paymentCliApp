@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Customer } from './customer';
 
 @Component({
-selector: 'app-payment-detail',
-templateUrl: 'payment-detail.component.html'
+    selector: 'app-payment-detail',
+    templateUrl: 'payment-detail.component.html'
 })
 
 export class PaymentDetailComponent {
@@ -11,10 +11,9 @@ export class PaymentDetailComponent {
     customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
 
-    amount1: number = this.customer.totalAmount; 
+    amount1: number = this.customer.totalAmount;
 
-
- value = '';
-  onEnter(value: string) { this.value = value; }
+    value = '';
+    onEnter(value: string) { this.value = value; }
 
 }
