@@ -11,5 +11,10 @@ export class PaymentDetailComponent {
     customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
 
-    
+    amount1: number = this.customer.totalAmount; 
+
+
+ value = '';
+  onEnter(value: string) { this.value = value; }
+
 }
