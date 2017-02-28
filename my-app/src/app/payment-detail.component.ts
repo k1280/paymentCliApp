@@ -14,6 +14,7 @@ export class PaymentDetailComponent {
     amount1: number = this.customer.totalAmount;
 
     value = '';
-    onEnter(value: string) { this.value = value; }
-
+    onEnter(paramValue: string) {
+        this.value = paramValue;
+    }
 }
