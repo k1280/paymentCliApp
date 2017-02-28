@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentDetailComponent } from './payment-detail.component';
+import { Customer } from './customer';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
@@ -31,5 +32,8 @@ describe('PaymentDetailComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    
+    it('should ', () => {
+        //form control? onInit? robocze nazwy
+        expect(component.input).toEqual(0);
+    });
 });

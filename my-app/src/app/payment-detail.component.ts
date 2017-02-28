@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Customer } from './customer';
 
 @Component({
@@ -6,7 +6,7 @@ import { Customer } from './customer';
     templateUrl: 'payment-detail.component.html'
 })
 
-export class PaymentDetailComponent {
+export class PaymentDetailComponent implements OnInit {
     @Input()
     customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
@@ -17,4 +17,8 @@ export class PaymentDetailComponent {
     onEnter(paramValue: string) {
         this.value = paramValue;
     }
+
+    ngOnInit() {
+      //0
+     }
 }
