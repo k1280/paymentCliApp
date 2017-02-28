@@ -32,7 +32,7 @@ describe('PaymentDetailComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should ', () => {
+    xit('should ', () => {
         //form control? onInit? robocze nazwy
         expect(component.input).toEqual(0);
     });
