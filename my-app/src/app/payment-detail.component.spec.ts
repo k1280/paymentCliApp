@@ -36,8 +36,19 @@ describe('PaymentDetailComponent', () => {
         expect(component.value).toEqual(0);
     });
 
-    fit('should check if onEnter works', () => {
+    it('should check if onEnter works', () => {
         component.onEnter(10);
         expect(component.value).toEqual(10);
     })
-});
+
+    //pod nowy html - wykorzystanie FormGroup(???)
+    // it('should check if totalAmount is set up to 0', () => {
+    //     expect(component.form.value.totalAmount).toEqual(0);
+    // });
+
+    // fit('should check if onEnter works', () => {
+    //     component.onEnter(10);
+    //     expect(component.form.value.totalAmount).toEqual(10);
+    // })
+
+    });

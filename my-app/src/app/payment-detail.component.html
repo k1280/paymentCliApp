@@ -2,9 +2,8 @@
     <h3>New payment</h3>
     <h4>{{customerDetails}}</h4>
     <h4>
-            {{customer.name}} {{customer.surname}} 
-            ({{customer.date}}, {{customer.totalAmount}})
-        </h4>
+        {{customer.name}} {{customer.surname}} ({{customer.date}}, {{customer.totalAmount}})
+    </h4>
     <div class="row">
         <div class="form-group col-md-3">
             <label for="name">Name:</label>
@@ -22,43 +21,92 @@
             <label for="totalAmount">Total Amount:</label>
             <input #amount type="text" class="form-control" (keyup.enter)="onEnter(amount.value)">
         </div>
+        <!--
+            <form [formGroup]="myForm" novalidate>
+                <label for="totalAmount">Total Amount:</label>
+            ??? <input formControlName="totalAmount" (keyup.enter)="onEnter(totalAmount.value)">
+            </form>
+         -->
+        ===============================================================
+        <h1>Add user</h1>
+        <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name">
+                <small [hidden]="myForm.controls.name.valid || (myForm.controls.name.pristine && !submitted)" class="text-danger">
+            Name is required (minimum 5 characters).
+          </small>
+                <!--<pre class="margin-20">{{ myForm.controls.name.errors | json }}</pre>-->
+            </div>
+            <div class="form-group" formGroupName="address">
+                <label for="">Address</label>
+                <input type="text" class="form-control" formControlName="street">
+                <small [hidden]="myForm.controls.address.controls.street.valid || (myForm.controls.address.controls.street.pristine && !submitted)"
+                    class="text-danger">
+                    Street required
+                    </small>
+            </div>
+            <div class="form-group" formGroupName="address">
+                <label for="">Postcode</label>
+                <input type="text" class="form-control" formControlName="postcode">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <div class="margin-20">
+                <div>myForm details:-</div>
+                <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+                <pre>Is myForm submitted?: <br>{{submitted | json}}</pre>
+                <pre>myForm value: <br>{{myForm.value | json}}</pre>
+            </div>
+            <div class="margin-20">
+                Form changes:
+            </div>
+            <div *ngFor="let event of events" class="margin-20">
+                <pre> {{ event | json }} </pre>
+            </div>
+        </form>
+
+
+
+
+
+
+        =================================================================
+        <h3>Payments details</h3>
+        <h4>Insert components amounts:</h4>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="name">Payment for:</label>
+                <input type="text" class="form-control" id="paymentPurpose">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="surname">Amount:</label>
+                <input type="text" class="form-control" [(ngModel)]="value">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="name">Payment for:</label>
+                <input type="text" class="form-control" id="paymentPurpose">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="surname">Amount:</label>
+                <input type="text" class="form-control" id="amount">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="name">Payment for:</label>
+                <input type="text" class="form-control" id="paymentPurpose">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="surname">Amount:</label>
+                <input type="text" class="form-control" id="amount">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12 ">
+                <button type="button" class="btn btn-default">Cancel</button>
+                <button type="button" class="btn btn-default pull-right">Submit</button>
+            </div>
+        </div>
     </div>
-    <h3>Payments details</h3>
-    <h4>Insert components amounts:</h4>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="name">Payment for:</label>
-            <input type="text" class="form-control" id="paymentPurpose">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="surname">Amount:</label>
-            <input type="text" class="form-control" [(ngModel)]="value" >
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="name">Payment for:</label>
-            <input type="text" class="form-control" id="paymentPurpose">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="surname">Amount:</label>
-            <input type="text" class="form-control" id="amount">
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="name">Payment for:</label>
-            <input type="text" class="form-control" id="paymentPurpose">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="surname">Amount:</label>
-            <input type="text" class="form-control" id="amount">
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-12 ">
-        <button type="button" class="btn btn-default">Cancel</button>
-        <button type="button" class="btn btn-default pull-right">Submit</button>
-        </div>
-    </div>
-</div>
