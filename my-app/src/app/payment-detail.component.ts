@@ -13,8 +13,8 @@ export class PaymentDetailComponent implements OnInit {
 
     amount1: number = this.customer.totalAmount;
 
-    value = '';
-    onEnter(paramValue: string) {
+    value;
+    onEnter(paramValue: number) {
         this.value = paramValue;
     }
 

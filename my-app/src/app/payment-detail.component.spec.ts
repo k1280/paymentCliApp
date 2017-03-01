@@ -32,8 +32,12 @@ describe('PaymentDetailComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    xit('should ', () => {
-        //form control? onInit? robocze nazwy
-        expect(component.input).toEqual(0);
+    it('should check if value is set up to 0', () => {
+        expect(component.value).toEqual(0);
     });
+
+    fit('should check if onEnter works', () => {
+        component.onEnter(10);
+        expect(component.value).toEqual(10);
+    })
 });
