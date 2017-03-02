@@ -10,6 +10,7 @@
             <div class="col-md-3">
                 <label>Name:</label>
                 <input type="text" formControlName="name">
+                <p *ngIf="totalAmountForm.controls.name.errors">This field is required</p>
             </div>
             <!-- formControlName -> associate the form controls to the model,
         each form control gets the formControlName dir so they can register
@@ -17,6 +18,7 @@
             <div class="col-md-3">
                 <label>Surname:</label>
                 <input type="text" formControlName="surname">
+                <p *ngIf="totalAmountForm.controls.surname.errors">This field is required</p>
             </div>
             <div class="col-md-3">
                 <label>Date:</label>
@@ -24,7 +26,7 @@
             </div>
             <div class="col-md-3">
                 <label>Total Amount:</label>
-                <input #amount type="text" formControlName="totalAmount">
+                <input #amount type="text" formControlName="totalAmount" (keyup.enter)="onEnter(totalAmount.value)">
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -70,7 +72,7 @@
         <h3>Payments details</h3>
         <h4>Insert components amounts:</h4>
         <div class="row">
-            <!-- <div class="form-group col-md-6">
+            <div class="form-group col-md-6">
                 <label for="name">Payment for:</label>
                 <input type="text" class="form-control" id="paymentPurpose">
             </div>
@@ -79,6 +81,7 @@
                 <input type="text" class="form-control" [(ngModel)]="value">
             </div>
         </div>
+        <!--
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="name">Payment for:</label>
@@ -105,4 +108,4 @@
                 <button type="button" class="btn btn-default pull-right">Submit</button>
             </div>
         </div>-->
-        </div>
+    </div>
