@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 //import { Customer } from './customer';
-import {ReactiveFormsModule} from '@angular/forms';
 
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-payment-detail',
@@ -10,23 +9,27 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 
 //form model for template
-export class PaymentDetailComponent {
-    totalAmountForm = new FormGroup({ //totalAmount represents FormGroup which is my form
-        name: new FormControl(), //for every field I have a FormControl
-        surname: new FormControl(),
-        date: new FormControl(),
-        totalAmount: new FormControl()
-        //INFO: FormControl takes a string as first argument in case I want to have form control with some default value
-    })
+export class PaymentDetailComponent implements OnInit {
+    /*switched to Form Builder
+    1. import of FormBuilder,
+    2. inject it to PaymentDetailComponent
+    3. form model using FormBuilder.group() in ngOnInit; no changes in the template*/
+    totalAmountForm: FormGroup;
+    constructor(private formBuilder: FormBuilder) { }
 
+    ngOnInit() {
+        this.totalAmountForm = this.formBuilder.group({
+            name: '',
+            surname:'',
+            date: '',
+            totalAmount: ''
+        });
+    }
 
     @Input()
     //customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
-
     //amount1: number = this.customer.totalAmount;
-
-
     value = '';
     onEnter(value: string) { this.value = value; }
 
