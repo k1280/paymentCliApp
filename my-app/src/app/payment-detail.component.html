@@ -9,7 +9,7 @@
             <!-- formGroup connects model with the form template -->
             <div class="col-md-3">
                 <label>Name:</label>
-                <input type="text" formControlName="name">
+                <input type="text" class="form-control" formControlName="name">
                 <p *ngIf="totalAmountForm.controls.name.errors">This field is required</p>
             </div>
             <!-- formControlName -> associate the form controls to the model,
@@ -17,16 +17,16 @@
         the controls on the outer form -->
             <div class="col-md-3">
                 <label>Surname:</label>
-                <input type="text" formControlName="surname">
+                <input type="text" class="form-control" formControlName="surname">
                 <p *ngIf="totalAmountForm.controls.surname.errors">This field is required</p>
             </div>
             <div class="col-md-3">
                 <label>Date:</label>
-                <input type="text" formControlName="date">
+                <input type="text" class="form-control" formControlName="date">
             </div>
             <div class="col-md-3">
                 <label>Total Amount:</label>
-                <input #amount type="text" formControlName="totalAmount" (keyup.enter)="onEnter(totalAmount.value)">
+                <input #amount type="text" class="form-control" formControlName="totalAmount" (keyup.enter)="onEnter(totalAmount.value)">
             </div>
             <button type="submit">Submit</button>
         </form>
