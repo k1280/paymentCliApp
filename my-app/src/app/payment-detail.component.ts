@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 //import { Customer } from './customer';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -15,7 +16,7 @@ export class PaymentDetailComponent {
         surname: new FormControl(),
         date: new FormControl(),
         totalAmount: new FormControl()
-        //IFNO: FormControl takes a string as first argument in case I want to have form control with some default value
+        //INFO: FormControl takes a string as first argument in case I want to have form control with some default value
     })
 
 
