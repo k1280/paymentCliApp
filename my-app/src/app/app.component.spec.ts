@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { PaymentDetailComponent } from './payment-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 describe('AppComponent', () => {
@@ -16,6 +16,7 @@ describe('AppComponent', () => {
       imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule
       ],
       providers: []

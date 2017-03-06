@@ -26,9 +26,9 @@
             </div>
             <div class="col-md-3">
                 <label>Total Amount:</label>
-                <input #amount type="text" class="form-control" formControlName="totalAmount" (keyup.enter)="onEnter(totalAmount.value)">
+                <input #amount type="text" class="form-control" formControlName="totalAmount" (keyup.enter)="onEnter(myForm.value)">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
         </form>
 
         <!--

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentDetailComponent } from './payment-detail.component';
 import { Customer } from './customer';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 describe('PaymentDetailComponent', () => {
@@ -16,7 +16,10 @@ describe('PaymentDetailComponent', () => {
                 PaymentDetailComponent,
                 AppComponent],
             imports: [
-                FormsModule
+                FormsModule,
+                FormBuilder, 
+                FormGroup, 
+                Validators
             ]
         })
             .compileComponents();
@@ -33,18 +36,13 @@ describe('PaymentDetailComponent', () => {
     });
 
     it('should check if value is set up to 0', () => {
-        expect(component.value).toEqual(0);
+        expect(component.totalAmountForm.value).toEqual(0);
     });
 
-    it('should check if onEnter works', () => {
-        component.onEnter(10);
-        expect(component.value).toEqual(10);
-    })
-
     //pod nowy html - wykorzystanie FormGroup(???)
-    // it('should check if totalAmount is set up to 0', () => {
-    //     expect(component.form.value.totalAmount).toEqual(0);
-    // });
+    it('should check if totalAmount is set up to 0', () => {
+        expect(component.totalAmountForm.value.totalAmount).toEqual(0);
+    });
 
     // fit('should check if onEnter works', () => {
     //     component.onEnter(10);

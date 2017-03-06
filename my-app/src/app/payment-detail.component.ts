@@ -20,10 +20,10 @@ export class PaymentDetailComponent implements OnInit {
     // III. adding validators
     ngOnInit() {
         this.totalAmountForm = this.formBuilder.group({
-            name: ['', Validators.required],
-            surname: ['', Validators.required],
+            name: ['James', Validators.required],
+            surname: ['Dean', Validators.required],
             date: '',
-            totalAmount: ''
+            totalAmount: 0
         });
 
     }
