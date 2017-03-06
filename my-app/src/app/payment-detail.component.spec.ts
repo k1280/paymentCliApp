@@ -30,10 +30,15 @@ describe('PaymentDetailComponent', () => {
         fixture.detectChanges();
     });
 
-    //pod nowy html - wykorzystanie FormGroup
-    it('should check if value of totalAmount is set up to 205', () => {
+    //checks if totalAmount is set to proper value
+    it('should check if value of totalAmount is set to proper value', () => {
         expect(component.totalAmountForm.value.totalAmount).toEqual(205);
     });
+
+    //checks if totalAmount is undefined
+    // it('should check if value of totalAmount is undefined', () => {
+    //     expect(component.totalAmountForm.value.totalAmount).toBeUndefined();
+    // });
 
     //some tests, todo..
     // fit('should check if onEnter works', () => {
