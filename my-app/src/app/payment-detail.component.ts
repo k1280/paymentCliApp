@@ -23,16 +23,16 @@ export class PaymentDetailComponent implements OnInit {
             name: ['James', Validators.required],
             surname: ['Dean', Validators.required],
             date: '',
-            totalAmount: 0
+            totalAmount: 205
         });
-
+         console.log(this.totalAmountForm.get('totalAmount'));
     }
 
     @Input()
     customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
     //amount1: number = this.customer.totalAmount;
-    value = '';
-    onEnter(value: string) { this.value = value; }
+    // value = '';
+    // onEnter(value: string) { this.value = value; }
 
 }

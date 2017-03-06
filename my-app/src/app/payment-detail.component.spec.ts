@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentDetailComponent } from './payment-detail.component';
 import { Customer } from './customer';
 import { AppComponent } from './app.component';
-import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 
 describe('PaymentDetailComponent', () => {
@@ -17,9 +17,8 @@ describe('PaymentDetailComponent', () => {
                 AppComponent],
             imports: [
                 FormsModule,
-                FormBuilder, 
-                FormGroup, 
-                Validators
+                ReactiveFormsModule
+                
             ]
         })
             .compileComponents();
@@ -31,19 +30,12 @@ describe('PaymentDetailComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
+    //pod nowy html - wykorzystanie FormGroup
+    it('should check if value of totalAmount is set up to 205', () => {
+        expect(component.totalAmountForm.value.totalAmount).toEqual(205);
     });
 
-    it('should check if value is set up to 0', () => {
-        expect(component.totalAmountForm.value).toEqual(0);
-    });
-
-    //pod nowy html - wykorzystanie FormGroup(???)
-    it('should check if totalAmount is set up to 0', () => {
-        expect(component.totalAmountForm.value.totalAmount).toEqual(0);
-    });
-
+    //some tests, todo..
     // fit('should check if onEnter works', () => {
     //     component.onEnter(10);
     //     expect(component.form.value.totalAmount).toEqual(10);
