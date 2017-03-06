@@ -18,7 +18,7 @@ describe('PaymentDetailComponent', () => {
             imports: [
                 FormsModule,
                 ReactiveFormsModule
-                
+
             ]
         })
             .compileComponents();
@@ -30,20 +30,22 @@ describe('PaymentDetailComponent', () => {
         fixture.detectChanges();
     });
 
-    //checks if totalAmount is set to proper value
-    it('should check if value of totalAmount is set to proper value', () => {
+    it('should check if totalAmount is set to proper value', () => {
         expect(component.totalAmountForm.value.totalAmount).toEqual(205);
     });
 
-    //checks if totalAmount is undefined
+    it('should check if value amount1 is the same as totalAmount', () => {
+        expect(component.totalAmountForm.value.totalAmount).toEqual(component.partAmountForm.value.amount1)
+    });
+
     // it('should check if value of totalAmount is undefined', () => {
     //     expect(component.totalAmountForm.value.totalAmount).toBeUndefined();
     // });
 
-    //some tests, todo..
+    //TODO
     // fit('should check if onEnter works', () => {
     //     component.onEnter(10);
     //     expect(component.form.value.totalAmount).toEqual(10);
     // })
 
-    });
+});
