@@ -34,18 +34,18 @@ describe('PaymentDetailComponent', () => {
         expect(component.totalAmountForm.value.totalAmount).toEqual(205);
     });
 
-    it('should check if value amount1 is the same as totalAmount', () => {
-        expect(component.totalAmountForm.value.totalAmount).toEqual(component.partAmountForm.value.amount1)
-    });
+    // it('should check if value amount1 is the same as totalAmount', () => {
+    //     expect(component.totalAmountForm.value.totalAmount).toEqual(component.partAmountForm.value.amount1)
+    // });
 
     // it('should check if value of totalAmount is undefined', () => {
     //     expect(component.totalAmountForm.value.totalAmount).toBeUndefined();
     // });
 
-    //TODO
-    // fit('should check if onEnter works', () => {
-    //     component.onEnter(10);
-    //     expect(component.form.value.totalAmount).toEqual(10);
+    //bad test - TODO: fix it
+    // it('should check if onEnter works', () => {
+    //     component.onEnter(component.totalAmountForm.value.totalAmount);
+    //     expect(component.totalAmountForm.value.totalAmount).toEqual(205);
     // })
 
 });
