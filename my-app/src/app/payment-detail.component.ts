@@ -27,10 +27,10 @@ export class PaymentDetailComponent implements OnInit {
     detailsFields = {
             paymentPurpose1: new FormControl(''),
             amount1: new FormControl(0),
-            paymentPurpose2: undefined,
-            amount2: undefined,
-            paymentPurpose3: undefined,
-            amount3: undefined
+            paymentPurpose2: new FormControl(''),
+            amount2: new FormControl(),
+            paymentPurpose3: new FormControl(''),
+            amount3: new FormControl()
         }
     constructor(private formBuilder: FormBuilder) { }
 

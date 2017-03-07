@@ -36,11 +36,11 @@ describe('PaymentDetailComponent', () => {
         expect(component.detailsFields.amount2.value).toEqual(0);
         expect(component.detailsFields.amount3.value).toEqual(0);
     });
-    
+
     it('should keep sum of subpayments equal to total amount', () => {
         component.totalFields.totalAmount.setValue(20);
         component.detailsFields.amount1.setValue(5);
-        expect(component.detailsFields.amount1.value).toEqual(15);
+        expect(component.detailsFields.amount2.value).toEqual(15);
     })
 
     it('should set the value of amount1 to value of totalAmount ', () => {
