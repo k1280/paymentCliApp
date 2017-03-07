@@ -43,7 +43,7 @@ export class PaymentDetailComponent implements OnInit {
     customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
     //amount1: number = this.customer.totalAmount;
-    value;
+    //value;
     //onEnter(value: number) { this.value = value; }
 
     onEnter() {
@@ -51,7 +51,17 @@ export class PaymentDetailComponent implements OnInit {
         return this.partAmountForm.value.amount1;
     }
 
+    onUpdate() {
+        this.partAmountForm.value.amount1 = this.partAmountForm.value.amount1 - this.partAmountForm.value.amount2;
+        return this.partAmountForm.value.amount1;
+    }
 
-
-
+    checkAmountsAndChange() {
+        if (this.partAmountForm.value.amount2 != 0 || this.partAmountForm.value.amount2 != undefined) {
+            if (this.partAmountForm.value.amount3 != 0 || this.partAmountForm.value.amount3 != undefined) {
+                this.onUpdate();
+            }
+            this.onUpdate();
+        }
+    }
 }
