@@ -30,22 +30,50 @@ describe('PaymentDetailComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should check if totalAmount is set to proper value', () => {
-        expect(component.totalAmountForm.value.totalAmount).toEqual(205);
+    it('should check intial state of inputs', () => {
+        expect(component.totalFields.totalAmount.value).toEqual(0);
+        expect(component.detailsFields.amount1.value).toEqual(0);
+        expect(component.detailsFields.amount2.value).toEqual(0);
+        expect(component.detailsFields.amount3.value).toEqual(0);
+    });
+    
+    it('should keep sum of subpayments equal to total amount', () => {
+        component.totalFields.totalAmount.setValue(20);
+        component.detailsFields.amount1.setValue(5);
+        expect(component.detailsFields.amount1.value).toEqual(15);
+    })
+
+    it('should set the value of amount1 to value of totalAmount ', () => {
+        component.totalFields.totalAmount.setValue(20);
+        expect(component.detailsFields.amount1.value).toEqual(20);
     });
 
-    // it('should check if value amount1 is the same as totalAmount', () => {
-    //     expect(component.totalAmountForm.value.totalAmount).toEqual(component.partAmountForm.value.amount1)
+    xit('should check if value amount1 is the same as totalAmount', () => {
+        expect(component.totalAmountForm.value.totalAmount).toEqual(component.partAmountForm.value.amount1)
+    });
+
+    xit('should check if value of totalAmount is undefined', () => {
+        expect(component.totalAmountForm.value.totalAmount).toBeUndefined();
+    });
+
+    // it('should check if value of totalAmount has changed', () => {
+
     // });
 
-    // it('should check if value of totalAmount is undefined', () => {
-    //     expect(component.totalAmountForm.value.totalAmount).toBeUndefined();
+    // it('should check if value of totalAmount has changed', () => {
+
     // });
 
-    //TODO
-    // fit('should check if onEnter works', () => {
-    //     component.onEnter(10);
-    //     expect(component.form.value.totalAmount).toEqual(10);
-    // })
+    //  it('should check if onEnter set value of amount1 to proper one', () => {
+
+    // });
+
+
+
+
+
+
+
+
 
 });

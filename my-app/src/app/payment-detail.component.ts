@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Customer } from './customer';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-payment-detail',
@@ -17,25 +17,32 @@ export class PaymentDetailComponent implements OnInit {
     3. form model using FormBuilder.group() in ngOnInit; no changes in the template*/
     totalAmountForm: FormGroup;
     partAmountForm: FormGroup;
-    constructor(private formBuilder: FormBuilder) { }
-
-    // III. adding validators
-    ngOnInit() {
-        this.totalAmountForm = this.formBuilder.group({
+    totalFields = {
             name: ['James', Validators.required],
             surname: ['Dean', Validators.required],
             date: '',
-            totalAmount: 205
-        });
-        //console.log(this.totalAmountForm.get('totalAmount'));
-        this.partAmountForm = this.formBuilder.group({
-            paymentPurpose1: undefined,
-            amount1: undefined,
+            totalAmount: new FormControl(205)
+        };
+
+    detailsFields = {
+            paymentPurpose1: new FormControl(''),
+            amount1: new FormControl(0),
             paymentPurpose2: undefined,
             amount2: undefined,
             paymentPurpose3: undefined,
             amount3: undefined
-        });
+        }
+    constructor(private formBuilder: FormBuilder) { }
+
+    // III. adding validators
+    ngOnInit() {
+        this.totalAmountForm = this.formBuilder.group(this.totalFields);
+        //console.log(this.totalAmountForm.get('totalAmount'));
+        this.partAmountForm = this.formBuilder.group(this.detailsFields);
+
+        this.totalFields.totalAmount.valueChanges.subscribe(it => {
+            this.detailsFields.amount1.setValue(it);
+        })
 
     }
 
@@ -45,11 +52,6 @@ export class PaymentDetailComponent implements OnInit {
     //amount1: number = this.customer.totalAmount;
     //value;
     //onEnter(value: number) { this.value = value; }
-
-    onEnter() {
-        this.partAmountForm.value.amount1 = this.totalAmountForm.value.totalAmount;
-        return this.partAmountForm.value.amount1;
-    }
 
     // onUpdate() {
     //     console.log('vndsjlk');
@@ -69,7 +71,7 @@ export class PaymentDetailComponent implements OnInit {
     //     }
     // }
 
-    onUpdate(value1, value2) {
+    onUpdate(value1: number, value2: number) {
         value1 = value1 - value2;
         return value1;
     }
