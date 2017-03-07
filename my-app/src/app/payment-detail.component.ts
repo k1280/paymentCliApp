@@ -51,17 +51,44 @@ export class PaymentDetailComponent implements OnInit {
         return this.partAmountForm.value.amount1;
     }
 
-    onUpdate() {
-        this.partAmountForm.value.amount1 = this.partAmountForm.value.amount1 - this.partAmountForm.value.amount2;
-        return this.partAmountForm.value.amount1;
+    // onUpdate() {
+    //     console.log('vndsjlk');
+    //     this.partAmountForm.value.amount1 = this.partAmountForm.value.amount1 - this.partAmountForm.value.amount2;
+    //     return this.partAmountForm.value.amount1;
+
+    // }
+
+    // checkAmountsAndChange() {
+    //     if (!!this.partAmountForm.value.amount2) {
+    //         if (!!this.partAmountForm.value.amount3) {
+    //             this.onUpdate();
+    //             console.log('amount3')
+    //         }
+    //         this.onUpdate();
+    //         console.log('amount2');
+    //     }
+    // }
+
+    onUpdate(value1, value2) {
+        value1 = value1 - value2;
+        return value1;
     }
 
     checkAmountsAndChange() {
-        if (this.partAmountForm.value.amount2 != 0 || this.partAmountForm.value.amount2 != undefined) {
-            if (this.partAmountForm.value.amount3 != 0 || this.partAmountForm.value.amount3 != undefined) {
-                this.onUpdate();
-            }
-            this.onUpdate();
+        if (!!this.partAmountForm.value.amount2 && this.partAmountForm.value.amount3 == null && this.partAmountForm.value.amount3 == undefined) {
+            this.partAmountForm.value.amount1 = this.onUpdate(this.partAmountForm.value.amount1, this.partAmountForm.value.amount2);
+        }
+        else if (!!this.partAmountForm.value.amount3 && !!this.partAmountForm.value.amount2) {
+            this.partAmountForm.value.amount1 = this.onUpdate(this.partAmountForm.value.amount1, this.partAmountForm.value.amount3);
+        }
+        else if (!!this.partAmountForm.value.amount3 && this.partAmountForm.value.amount2 == null && this.partAmountForm.value.amount2 == undefined) {
+            this.partAmountForm.value.amount1 = this.onUpdate(this.partAmountForm.value.amount1, this.partAmountForm.value.amount3);
+        } else { //... 
         }
     }
+
+
+
+
+
 }
