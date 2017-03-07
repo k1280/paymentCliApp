@@ -44,11 +44,14 @@ export class PaymentDetailComponent implements OnInit {
     customerDetails: string = "Personal Details"
     //amount1: number = this.customer.totalAmount;
     value;
-    onEnter(value: number) { this.value = value; }
+    //onEnter(value: number) { this.value = value; }
+
+    onEnter() {
+        this.partAmountForm.value.amount1 = this.totalAmountForm.value.totalAmount;
+        return this.partAmountForm.value.amount1;
+    }
 
 
 
-         
-          
 
 }

@@ -42,10 +42,10 @@ describe('PaymentDetailComponent', () => {
     //     expect(component.totalAmountForm.value.totalAmount).toBeUndefined();
     // });
 
-    //bad test - TODO: fix it
-    // it('should check if onEnter works', () => {
-    //     component.onEnter(component.totalAmountForm.value.totalAmount);
-    //     expect(component.totalAmountForm.value.totalAmount).toEqual(205);
+    //TODO
+    // fit('should check if onEnter works', () => {
+    //     component.onEnter(10);
+    //     expect(component.form.value.totalAmount).toEqual(10);
     // })
 
 });
