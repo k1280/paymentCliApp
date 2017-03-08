@@ -18,20 +18,20 @@ export class PaymentDetailComponent implements OnInit {
     totalAmountForm: FormGroup;
     partAmountForm: FormGroup;
     totalFields = {
-            name: ['James', Validators.required],
-            surname: ['Dean', Validators.required],
-            date: '',
-            totalAmount: new FormControl(205)
-        };
+        name: ['James', Validators.required],
+        surname: ['Dean', Validators.required],
+        date: '',
+        totalAmount: new FormControl(0)
+    };
 
     detailsFields = {
-            paymentPurpose1: new FormControl(''), //previously FormGroup 8.03.17
-            amount1: new FormControl(0),
-            paymentPurpose2: new FormControl(''),
-            amount2: new FormControl(),
-            paymentPurpose3: new FormControl(''),
-            amount3: new FormControl()
-        }
+        paymentPurpose1: new FormControl(''), //previously FormGroup 8.03.17
+        amount1: new FormControl(0),
+        paymentPurpose2: new FormControl(''),
+        amount2: new FormControl(),
+        paymentPurpose3: new FormControl(''),
+        amount3: new FormControl()
+    }
     constructor(private formBuilder: FormBuilder) { }
 
     // III. adding validators
@@ -44,10 +44,16 @@ export class PaymentDetailComponent implements OnInit {
             this.detailsFields.amount1.setValue(it);
         })
 
+        // this.detailsFields.amount1.valueChanges.subscribe(it => {
+        //     this.detailsFields.amount2.setValue(it)
+        // })
+
+        //code for passing the rest of the value to amount2 if we will change amount1
+
     }
 
     @Input()
     customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
-    
+
 }
