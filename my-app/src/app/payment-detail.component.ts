@@ -28,9 +28,9 @@ export class PaymentDetailComponent implements OnInit {
         paymentPurpose1: new FormControl(''), //previously FormGroup 8.03.17
         amount1: new FormControl(0),
         paymentPurpose2: new FormControl(''),
-        amount2: new FormControl(),
+        amount2: new FormControl(0),
         paymentPurpose3: new FormControl(''),
-        amount3: new FormControl()
+        amount3: new FormControl(0)
     }
     constructor(private formBuilder: FormBuilder) { }
 
@@ -42,6 +42,10 @@ export class PaymentDetailComponent implements OnInit {
 
         this.totalFields.totalAmount.valueChanges.subscribe(it => {
             this.detailsFields.amount1.setValue(it);
+        })
+
+        this.detailsFields.amount1.valueChanges.subscribe(it => {
+            this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
         })
 
         

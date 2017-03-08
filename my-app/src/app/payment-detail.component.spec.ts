@@ -41,7 +41,7 @@ describe('PaymentDetailComponent', () => {
         component.totalFields.totalAmount.setValue(20);
         component.detailsFields.amount1.setValue(5);
         expect(component.detailsFields.amount2.value).toEqual(15);
-    })
+    });
 
     it('should set the value of amount1 to value of totalAmount ', () => {
         component.totalFields.totalAmount.setValue(20);
