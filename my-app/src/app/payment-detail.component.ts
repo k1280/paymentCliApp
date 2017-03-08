@@ -25,7 +25,7 @@ export class PaymentDetailComponent implements OnInit {
         };
 
     detailsFields = {
-            paymentPurpose1: new FormControl(''),
+            paymentPurpose1: new FormControl(''), //previously FormGroup 8.03.17
             amount1: new FormControl(0),
             paymentPurpose2: new FormControl(''),
             amount2: new FormControl(),
