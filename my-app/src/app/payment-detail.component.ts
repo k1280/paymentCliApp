@@ -49,48 +49,5 @@ export class PaymentDetailComponent implements OnInit {
     @Input()
     customer: Customer = new Customer();
     customerDetails: string = "Personal Details"
-    //amount1: number = this.customer.totalAmount;
-    //value;
-    //onEnter(value: number) { this.value = value; }
-
-    // onUpdate() {
-    //     console.log('vndsjlk');
-    //     this.partAmountForm.value.amount1 = this.partAmountForm.value.amount1 - this.partAmountForm.value.amount2;
-    //     return this.partAmountForm.value.amount1;
-
-    // }
-
-    // checkAmountsAndChange() {
-    //     if (!!this.partAmountForm.value.amount2) {
-    //         if (!!this.partAmountForm.value.amount3) {
-    //             this.onUpdate();
-    //             console.log('amount3')
-    //         }
-    //         this.onUpdate();
-    //         console.log('amount2');
-    //     }
-    // }
-
-    onUpdate(value1: number, value2: number) {
-        value1 = value1 - value2;
-        return value1;
-    }
-
-    checkAmountsAndChange() {
-        if (!!this.partAmountForm.value.amount2 && this.partAmountForm.value.amount3 == null && this.partAmountForm.value.amount3 == undefined) {
-            this.partAmountForm.value.amount1 = this.onUpdate(this.partAmountForm.value.amount1, this.partAmountForm.value.amount2);
-        }
-        else if (!!this.partAmountForm.value.amount3 && !!this.partAmountForm.value.amount2) {
-            this.partAmountForm.value.amount1 = this.onUpdate(this.partAmountForm.value.amount1, this.partAmountForm.value.amount3);
-        }
-        else if (!!this.partAmountForm.value.amount3 && this.partAmountForm.value.amount2 == null && this.partAmountForm.value.amount2 == undefined) {
-            this.partAmountForm.value.amount1 = this.onUpdate(this.partAmountForm.value.amount1, this.partAmountForm.value.amount3);
-        } else { //... 
-        }
-    }
-
-
-
-
-
+    
 }
