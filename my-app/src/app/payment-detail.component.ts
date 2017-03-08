@@ -44,9 +44,7 @@ export class PaymentDetailComponent implements OnInit {
             this.detailsFields.amount1.setValue(it);
         })
 
-        // this.detailsFields.amount1.valueChanges.subscribe(it => {
-        //     this.detailsFields.amount2.setValue(it)
-        // })
+        
 
         //code for passing the rest of the value to amount2 if we will change amount1
 
