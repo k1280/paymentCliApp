@@ -36,6 +36,11 @@ describe('PaymentDetailComponent', () => {
         expect(component.detailsFields.amount2.value).toEqual(0);
         expect(component.detailsFields.amount3.value).toEqual(0);
     });
+    
+    it('should check if value amount1 is the same as totalAmount', () => {
+        component.totalFields.totalAmount.setValue(30);
+        expect(component.totalFields.totalAmount.value).toEqual(component.detailsFields.amount1.value)
+    });
 
     it('should keep sum of subpayments equal to total amount', () => {
         component.totalFields.totalAmount.setValue(20);
@@ -69,10 +74,6 @@ describe('PaymentDetailComponent', () => {
     it('should set the value of amount1 to value of totalAmount ', () => {
         component.totalFields.totalAmount.setValue(20);
         expect(component.detailsFields.amount1.value).toEqual(20);
-    });
-
-    xit('should check if value amount1 is the same as totalAmount', () => {
-        expect(component.totalAmountForm.value.totalAmount).toEqual(component.partAmountForm.value.amount1)
     });
 
     xit('should check if value of totalAmount is undefined', () => {
