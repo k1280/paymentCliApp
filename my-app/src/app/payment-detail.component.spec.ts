@@ -45,9 +45,25 @@ describe('PaymentDetailComponent', () => {
 
     it('should keep sum of subpayments equal to total amount', () => {
         component.totalFields.totalAmount.setValue(20);
-        component.detailsFields.amount1.setValue(5);
-        component.detailsFields.amount2.setValue(4);
+        component.detailsFields.amount1.setValue(4);
+        component.detailsFields.amount2.setValue(5);
         expect(component.detailsFields.amount3.value).toEqual(11);
+    });
+
+    it('should display input for amount4 if sum of 3 first subpayments is less than totalAmount', () => {
+        component.totalFields.totalAmount.setValue(30);
+        component.detailsFields.amount1.setValue(5);
+        component.detailsFields.amount2.setValue(5);
+        component.detailsFields.amount3.setValue(15);
+        expect(component.detailsFields.amount4).toBeDefined();
+    });
+
+    it('should set amout4 with the difference when sum of 3 first subpayments is less than totalAmount', () => {
+        component.totalFields.totalAmount.setValue(30);
+        component.detailsFields.amount1.setValue(5);
+        component.detailsFields.amount2.setValue(5);
+        component.detailsFields.amount3.setValue(15);
+        expect(component.detailsFields.amount4.value).toEqual(5);
     });
 
     it('should set the value of amount1 to value of totalAmount ', () => {

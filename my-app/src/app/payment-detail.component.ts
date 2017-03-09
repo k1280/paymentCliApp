@@ -21,7 +21,7 @@ export class PaymentDetailComponent implements OnInit {
         name: ['James', Validators.required],
         surname: ['Dean', Validators.required],
         date: '',
-        totalAmount: new FormControl(0)
+        totalAmount: new FormControl(200)
     };
 
     detailsFields = {
@@ -30,7 +30,9 @@ export class PaymentDetailComponent implements OnInit {
         paymentPurpose2: new FormControl(''),
         amount2: new FormControl(0),
         paymentPurpose3: new FormControl(''),
-        amount3: new FormControl(0)
+        amount3: new FormControl(0),
+        paymentPurpose4: new FormControl(''),
+        amount4: new FormControl(0)
     }
     constructor(private formBuilder: FormBuilder) { }
 
