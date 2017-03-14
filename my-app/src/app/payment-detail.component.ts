@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Customer } from './customer';
 
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
     selector: 'app-payment-detail',
@@ -17,11 +17,12 @@ export class PaymentDetailComponent implements OnInit {
     3. form model using FormBuilder.group() in ngOnInit; no changes in the template*/
     totalAmountForm: FormGroup;
     partAmountForm: FormGroup;
+    addPartAmountForm: FormGroup;
     totalFields = {
         name: ['James', Validators.required],
         surname: ['Dean', Validators.required],
         date: '',
-        totalAmount: new FormControl(200)
+        totalAmount: new FormControl(0)
     };
 
     detailsFields = {
@@ -30,17 +31,21 @@ export class PaymentDetailComponent implements OnInit {
         paymentPurpose2: new FormControl(''),
         amount2: new FormControl(0),
         paymentPurpose3: new FormControl(''),
-        amount3: new FormControl(0),
-        paymentPurpose4: new FormControl(''),
-        amount4: new FormControl(0)
+        amount3: new FormControl(0)
+    }
+ 
+    additionalDetailsFields = {
+        payment: new FormArray([
+        new FormControl(null)
+      ])
     }
     constructor(private formBuilder: FormBuilder) { }
 
     // III. adding validators
     ngOnInit() {
         this.totalAmountForm = this.formBuilder.group(this.totalFields);
-        //console.log(this.totalAmountForm.get('totalAmount'));
         this.partAmountForm = this.formBuilder.group(this.detailsFields);
+        this.addPartAmountForm = this.formBuilder.group(this.additionalDetailsFields);
 
         this.totalFields.totalAmount.valueChanges.subscribe(it => {
             this.detailsFields.amount1.setValue(it);
