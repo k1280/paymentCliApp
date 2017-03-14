@@ -1,0 +1,9 @@
+<fieldset>
+    <h6>Items</h6>
+    <div *ngIf="AdditionalDetailFieldsComponent.hasError('minSum')">
+        You must buy a total sum of at least {{ AdditionalDetailFieldsComponent.getError('minSum') }}.
+    </div>
+    <item-control *ngFor="let item of AdditionalDetailFieldsComponent.controls; let i=index" [index]="i" [item]="item" (removed)="AdditionalDetailFieldsComponent.removeAt($event)">
+    </item-control>
+</fieldset>
+<button type="button" class="btn btn-link" (click)="addItem()">Add another item</button>
