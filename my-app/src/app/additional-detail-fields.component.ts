@@ -9,7 +9,13 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormArray, AbstractCon
 
 export class AdditionalDetailFieldsComponent implements OnInit {
     subpaymentForm: FormGroup;
-    
+
+    get subpayments(): FormArray {
+        return <FormArray>this.subpaymentForm.get('subpayments');
+    }
+
+    constructor(private formBuilder: FormBuilder) { }
+
     ngOnInit(): void {
 
     }
