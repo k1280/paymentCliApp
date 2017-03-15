@@ -1,9 +1,12 @@
-<fieldset>
-    <h6>Items</h6>
-    <div *ngIf="AdditionalDetailFieldsComponent.hasError('minSum')">
-        You must buy a total sum of at least {{ AdditionalDetailFieldsComponent.getError('minSum') }}.
+<form [formGroup]="partAmountForm" *ngIf="">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="name">Payment for:</label>
+            <input type="text" class="form-control" formControlName="paymentPurpose1">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Amount:</label>
+            <input type="text" class="form-control" formControlName="amount1">
+        </div>
     </div>
-    <item-control *ngFor="let item of AdditionalDetailFieldsComponent.controls; let i=index" [index]="i" [item]="item" (removed)="AdditionalDetailFieldsComponent.removeAt($event)">
-    </item-control>
-</fieldset>
-<button type="button" class="btn btn-link" (click)="addItem()">Add another item</button>
+</form>

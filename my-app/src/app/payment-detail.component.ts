@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Customer } from './customer';
 
 import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { AdditionalDetailFieldsComponent } from './additional-detail-fields.component'
 
 @Component({
     selector: 'app-payment-detail',
@@ -33,11 +34,11 @@ export class PaymentDetailComponent implements OnInit {
         paymentPurpose3: new FormControl(''),
         amount3: new FormControl(0)
     }
- 
+
     additionalDetailsFields = {
         payment: new FormArray([
-        new FormControl(null)
-      ])
+            new FormControl(null)
+        ])
     }
     constructor(private formBuilder: FormBuilder) { }
 
@@ -55,10 +56,10 @@ export class PaymentDetailComponent implements OnInit {
             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
         })
 
-         this.detailsFields.amount2.valueChanges.subscribe(it => {
+        this.detailsFields.amount2.valueChanges.subscribe(it => {
             this.detailsFields.amount3.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value - this.detailsFields.amount2.value);
         })
-       
+
         //code for passing the rest of the value to amount2 if we will change amount1
 
     }
