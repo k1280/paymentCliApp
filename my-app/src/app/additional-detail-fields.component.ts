@@ -17,7 +17,16 @@ export class AdditionalDetailFieldsComponent implements OnInit {
     constructor(private formBuilder: FormBuilder) { }
 
     ngOnInit(): void {
+        this.subpaymentForm = this.formBuilder.group({
+            subpayments: this.formBuilder.array([this.buildSubpayments()])
+        })
+    }
 
+    buildSubpayments(): FormGroup {
+        return this.formBuilder.group({
+            paymentPurpose1: '',
+            amount1: ''
+        });
     }
 }
 
