@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, FormArray, AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Component({
     selector: 'additional-detail-fields',
@@ -7,6 +7,11 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormArray, AbstractCon
     inputs: ['amount4', 'amount5']
 })
 
-export class AdditionalDetailFieldsComponent {
+export class AdditionalDetailFieldsComponent implements OnInit {
+    subpaymentForm: FormGroup;
+    
+    ngOnInit(): void {
 
+    }
 }
+

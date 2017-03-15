@@ -1,12 +1,14 @@
-<form [formGroup]="partAmountForm" *ngIf="">
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="name">Payment for:</label>
-            <input type="text" class="form-control" formControlName="paymentPurpose1">
+<div class="col-md-12">
+    <form [formGroup]="subpaymentForm">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="name">Payment for:</label>
+                <input type="text" class="form-control" formControlName="paymentPurpose1">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Amount:</label>
+                <input type="text" class="form-control" formControlName="amount1">
+            </div>
         </div>
-        <div class="form-group col-md-6">
-            <label>Amount:</label>
-            <input type="text" class="form-control" formControlName="amount1">
-        </div>
-    </div>
-</form>
+    </form>
+</div>
