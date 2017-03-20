@@ -70,8 +70,8 @@
 
 // }
 
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
@@ -79,6 +79,29 @@ import { FormControl } from '@angular/forms';
     templateUrl: './payment-detail.component.html',
 })
 
-export class PaymentDetailComponent{
+
+
+export class PaymentDetailComponent implements OnInit {
+    totalAmountForm: FormGroup;
+    partAmountForm: FormGroup;
+
+    totalFields = {
+        name: 'James',
+        surname: 'Dean',
+        date: '',
+        totalAmount: ''
+    };
+
+    detailsFields = {
+        paymentPurpose1: 'fsa',
+        amount1: 100
+    };
+
+    constructor(private formBuilder: FormBuilder) { }
+
+    ngOnInit(): void {
+        this.totalAmountForm = this.formBuilder.group(this.totalFields);
+        //this.detailsFields = this.formBuilder.group(this.amount1);
+    }
 
 }
