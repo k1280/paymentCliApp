@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div formArrayName="subpayments" *ngFor="let subpayment of subpayments.controls; let i=index">
+    <div formArrayName="subpaymentForm.subpayments" *ngFor="let subpayment of subpayments.controls; let i=index">
         <form [formGroup]="subpaymentForm">
             <div class="row">
                 <!--<div class="form-group col-md-6">
