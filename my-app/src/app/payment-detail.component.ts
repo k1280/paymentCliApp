@@ -7,7 +7,7 @@ import { AdditionalDetailFieldsComponent } from './additional-detail-fields.comp
 @Component({
     selector: 'app-payment-detail',
     templateUrl: 'payment-detail.component.html',
-    inputs: ['name', 'surname', 'date', 'totalAmount', 'amount1', 'amount2', 'amount3'] //???
+    inputs: ['name', 'surname', 'date', 'totalAmount', 'amount'] //???
 })
 
 //I. form model for template
@@ -28,14 +28,6 @@ export class PaymentDetailComponent implements OnInit {
     get detailsFields(): FormArray {
         return <FormArray>this.partAmountForm.get('detailsFields');
     }
-    // detailsFields = {
-    //     paymentPurpose1: new FormControl(''), //previously FormGroup 8.03.17
-    //     amount1: new FormControl(0),
-    //     paymentPurpose2: new FormControl(''),
-    //     amount2: new FormControl(0),
-    //     paymentPurpose3: new FormControl(''),
-    //     amount3: new FormControl(0)
-    // }
 
     constructor(private formBuilder: FormBuilder) { }
 
@@ -45,36 +37,27 @@ export class PaymentDetailComponent implements OnInit {
         //this.partAmountForm = this.formBuilder.group(this.detailsFields);
 
         this.totalFields.totalAmount.valueChanges.subscribe(it => {
-            //this.detailsFields.amount1.setValue(it);
+            this.detailsFields.controls[0].patchValue({ amount: it });
         })
-
-        // this.detailsFields.amount1.valueChanges.subscribe(it => {
-        //     this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
-        // })
-
-        // this.detailsFields.amount2.valueChanges.subscribe(it => {
-        //     this.detailsFields.amount3.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value - this.detailsFields.amount2.value);
-        // })
 
         //code for passing the rest of the value to amount2 if we will change amount1
         this.partAmountForm = this.formBuilder.group({
-            detailsFields: this.formBuilder.array([this.buildDetailsFields()])
+            detailsFields: this.formBuilder.array([])
         })
         this.addSubpayment();
         this.addSubpayment();
+        this.addSubpayment();
 
     }
+
     addSubpayment(): void {
-        this.detailsFields.push(this.buildDetailsFields());
-    }
-
-
-    buildDetailsFields(): FormGroup {
-        return this.formBuilder.group({
-            paymentPurpose1: '',
-            amount1: ''
+        const item = this.formBuilder.group({
+            paymentPurpose: new FormControl(''),
+            amount: new FormControl('')
         });
+        this.detailsFields.push(item);
     }
+
 
     //TODO hmm.. addSubpayment - subscribe??? Function to set values in inputs and display other inputs if necessary??
 
