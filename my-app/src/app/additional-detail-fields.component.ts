@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, FormArray, AbstractControl, ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { PaymentDetailComponent } from './payment-detail.component';
 
 @Component({
     selector: 'additional-detail-fields',
@@ -9,9 +10,33 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormArray, AbstractCon
 
 export class AdditionalDetailFieldsComponent implements OnInit {
     subpaymentForm: FormGroup;
-    
-    ngOnInit(): void {
 
+    get subpayments(): FormArray {
+        return <FormArray>this.subpaymentForm.get('subpayments');
+    }
+
+    constructor(private formBuilder: FormBuilder) { }
+
+    ngOnInit(): void {
+        this.subpaymentForm = this.formBuilder.group({
+            subpayments: this.formBuilder.array([this.buildSubpayments()])
+        })
+    }
+
+    addSubpayment(): void {
+        this.subpayments.push(this.buildSubpayments());
+    }
+
+    buildSubpayments(): FormGroup {
+        return this.formBuilder.group({
+            paymentPurpose1: '',
+            amount1: ''
+        });
     }
 }
+
+
+
+
+
 

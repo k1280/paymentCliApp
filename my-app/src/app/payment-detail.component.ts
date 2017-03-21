@@ -69,3 +69,39 @@ export class PaymentDetailComponent implements OnInit {
     customerDetails: string = "Personal Details"
 
 }
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormGroup, FormBuilder } from '@angular/forms';
+
+// @Component({
+//     moduleId: module.id,
+//     selector: 'app-payment-detail',
+//     templateUrl: './payment-detail.component.html',
+// })
+
+
+
+// export class PaymentDetailComponent implements OnInit {
+//     totalAmountForm: FormGroup;
+//     partAmountForm: FormGroup;
+
+//     totalFields = {
+//         name: 'James',
+//         surname: 'Dean',
+//         date: '',
+//         totalAmount: ''
+//     };
+
+//     detailsFields = {
+//         paymentPurpose1: 'fsa',
+//         amount1: 100
+//     };
+
+//     constructor(private formBuilder: FormBuilder) { }
+
+//     ngOnInit(): void {
+//         this.totalAmountForm = this.formBuilder.group(this.totalFields);
+//         //this.detailsFields = this.formBuilder.group(this.amount1);
+//     }
+
+// }
