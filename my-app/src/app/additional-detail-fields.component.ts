@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, FormArray, ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { PaymentDetailComponent } from './payment-detail.component';
 
 @Component({
@@ -9,29 +9,29 @@ import { PaymentDetailComponent } from './payment-detail.component';
 })
 
 export class AdditionalDetailFieldsComponent implements OnInit {
-    // subpaymentForm: FormGroup;
+    subpaymentForm: FormGroup;
 
-    // get subpayments(): FormArray {
-    //     return <FormArray>this.subpaymentForm.get('subpayments');
-    // }
+    get subpayments(): FormArray {
+        return <FormArray>this.subpaymentForm.get('subpayments');
+    }
 
-    // constructor(private formBuilder: FormBuilder) { }
+    constructor(private formBuilder: FormBuilder) { }
 
     ngOnInit(): void {
-    //     this.subpaymentForm = this.formBuilder.group({
-    //         subpayments: this.formBuilder.array([this.buildSubpayments()])
-    //     })
-    // }
+        this.subpaymentForm = this.formBuilder.group({
+            subpayments: this.formBuilder.array([this.buildSubpayments()])
+        })
+    }
 
-    // addSubpayment(): void {
-    //     this.subpayments.push(this.buildSubpayments());
-    // }
+    addSubpayment(): void {
+        this.subpayments.push(this.buildSubpayments());
+    }
 
-    // buildSubpayments(): FormGroup {
-    //     return this.formBuilder.group({
-    //         paymentPurpose1: '',
-    //         amount1: ''
-    //     });
+    buildSubpayments(): FormGroup {
+        return this.formBuilder.group({
+            paymentPurpose1: '',
+            amount1: ''
+        });
     }
 }
 

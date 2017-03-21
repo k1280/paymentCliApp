@@ -1,15 +1,19 @@
 <div class="col-md-12">
-    <div formArrayName="subpaymentForm.subpayments" *ngFor="let subpayment of subpayments.controls; let i=index">
-        <form [formGroup]="subpaymentForm">
-            <div class="row">
-                <!--<div class="form-group col-md-6">
-                    <label class="control-label" attr.for="{{'paymentPurpose1Id' + i}}">Payment for:</label>
-                    <input type="text" class="form-control" id="{{'paymentPurpose1' + i}}" formControlName="paymentPurpose1">
-                </div>-->
-                <div class="form-group col-md-6">
-                    <label class="control-label" attr.for="{{'amount1Id' + i}}">Amount:</label>
-                    <input type="text" class="form-control" id="{{'amount1' + i}}" formControlName="amount1">
+    <form [formGroup]="subpaymentForm">
+        <!-- co z formGroupName??????? -->
+        <div formArrayName="subpayments">
+            <div *ngFor="let subpayment of subpayments.controls; let i=index" [formGroupName]="i">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" attr.for="{{'paymentPurpose1Id' + i}}">Payment for:</label>
+                        <input type="text" class="form-control" id="{{'paymentPurpose1' + i}}" formControlName="paymentPurpose1">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label" attr.for="{{'amount1Id' + i}}">Amount:</label>
+                        <input type="text" class="form-control" id="{{'amount1' + i}}" formControlName="amount1">
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
