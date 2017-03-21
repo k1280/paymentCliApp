@@ -21,11 +21,14 @@ export class AdditionalDetailFieldsComponent implements OnInit {
         this.subpaymentForm = this.formBuilder.group({
             subpayments: this.formBuilder.array([this.buildSubpayments()])
         })
+        this.addSubpayment();
+        this.addSubpayment();
     }
 
     addSubpayment(): void {
         this.subpayments.push(this.buildSubpayments());
     }
+
 
     buildSubpayments(): FormGroup {
         return this.formBuilder.group({
