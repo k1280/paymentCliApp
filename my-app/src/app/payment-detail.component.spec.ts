@@ -32,9 +32,6 @@ describe('PaymentDetailComponent', () => {
 
     it('should check intial state of inputs', () => {
         expect(component.totalFields.totalAmount.value).toEqual(0);
-        expect(component.detailsFields.amount1.value).toEqual(0);
-        expect(component.detailsFields.amount2.value).toEqual(0);
-        expect(component.detailsFields.amount3.value).toEqual(0);
     });
     
     it('should check if value amount1 is the same as totalAmount', () => {
