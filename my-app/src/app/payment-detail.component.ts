@@ -63,7 +63,7 @@ export class PaymentDetailComponent implements OnInit {
         this.detailsFields.push(item);
     }
 
-    //TODO hmm.. addSubpayment - subscribe??? Function to set values in inputs and display other inputs if necessary??
+    //TODO addSubpayment - subscribe??? Function to set values in inputs and display other inputs if necessary??
 
     @Input()
     customer: Customer = new Customer();
