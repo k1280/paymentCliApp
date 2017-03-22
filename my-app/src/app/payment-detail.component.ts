@@ -1,3 +1,4 @@
+import { totalmem } from 'os';
 import { Component, Input, OnInit } from '@angular/core';
 import { Customer } from './customer';
 
@@ -40,12 +41,11 @@ export class PaymentDetailComponent implements OnInit {
             this.detailsFields.controls[0].patchValue({ amount: it });
         })
 
-  
-
-        //   this.detailsFields.amount1.valueChanges.subscribe(it => {
-        //             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
+        //   this.detailsFields.value.amount.valueChanges.subscribe(it => {
+        //             this.detailsFields.value.amount.setValue(this.totalFields.totalAmount.value - this.detailsFields.value.amount);
         //         })
 
+        //this.partAmountForm.valueChanges.subscribe(it => {}) no! ADDSUBPAYMENT?
 
         this.partAmountForm = this.formBuilder.group({
             detailsFields: this.formBuilder.array([])
@@ -53,6 +53,7 @@ export class PaymentDetailComponent implements OnInit {
         this.addSubpayment();
         this.addSubpayment();
         this.addSubpayment();
+
     }
 
     addSubpayment(): void {
