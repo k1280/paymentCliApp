@@ -44,6 +44,7 @@ export class PaymentDetailComponent implements OnInit {
         //             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
         //         })
 
+
         this.partAmountForm = this.formBuilder.group({
             detailsFields: this.formBuilder.array([])
         })
