@@ -40,6 +40,8 @@ export class PaymentDetailComponent implements OnInit {
             this.detailsFields.controls[0].patchValue({ amount: it });
         })
 
+  
+
         //   this.detailsFields.amount1.valueChanges.subscribe(it => {
         //             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
         //         })

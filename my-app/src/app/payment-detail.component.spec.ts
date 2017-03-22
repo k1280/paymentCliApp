@@ -42,34 +42,34 @@ describe('PaymentDetailComponent', () => {
         expect(component.totalFields.totalAmount.value).toEqual(component.detailsFields.controls[0].value.amount);
     });
 
-    // it('should keep sum of subpayments equal to total amount', () => {
-    //     component.totalFields.totalAmount.setValue(20);
-    //     component.detailsFields.amount1.setValue(5);
-    //     expect(component.detailsFields.amount2.value).toEqual(15);
-    // });
+    it('should keep sum of subpayments equal to total amount', () => {
+        component.totalFields.totalAmount.setValue(20);
+        component.detailsFields.controls[0].patchValue({ amount: 5 });
+        expect(component.detailsFields.controls[1].value.amount).toEqual(15);
+    });
 
-    // it('should keep sum of subpayments equal to total amount', () => {
-    //     component.totalFields.totalAmount.setValue(20);
-    //     component.detailsFields.amount1.setValue(4);
-    //     component.detailsFields.amount2.setValue(5);
-    //     expect(component.detailsFields.amount3.value).toEqual(11);
-    // });
+    xit('should keep sum of subpayments equal to total amount', () => {
+        component.totalFields.totalAmount.setValue(25);
+        component.detailsFields.controls[0].patchValue({ amount: 5 });
+        component.detailsFields.controls[1].patchValue({ amount: 15 });
+        expect(component.detailsFields.controls[2].value.amount).toEqual(5);
+    });
 
-    // it('should display input for amount4 if sum of 3 first subpayments is less than totalAmount', () => {
-    //     component.totalFields.totalAmount.setValue(30);
-    //     component.detailsFields.amount1.setValue(5);
-    //     component.detailsFields.amount2.setValue(5);
-    //     component.detailsFields.amount3.setValue(15);
-    //     expect(component.detailsFields.amount4).toBeDefined();
-    // });
+    xit('should display input for amount4 if sum of 3 first subpayments is less than totalAmount', () => {
+        component.totalFields.totalAmount.setValue(300);
+        component.detailsFields.controls[0].patchValue({ amount: 5 });
+        component.detailsFields.controls[1].patchValue({ amount: 15 });
+        component.detailsFields.controls[2].patchValue({ amount: 15 });
+        expect(component.detailsFields.controls[3].value.amount).toBeDefined();
+    });
 
-    // it('should set amout4 with the difference when sum of 3 first subpayments is less than totalAmount', () => {
-    //     component.totalFields.totalAmount.setValue(30);
-    //     component.detailsFields.amount1.setValue(5);
-    //     component.detailsFields.amount2.setValue(5);
-    //     component.detailsFields.amount3.setValue(15);
-    //     expect(component.detailsFields.amount4.value).toEqual(5);
-    // });
+    xit('should set amount with the difference when sum of 3 first subpayments is less than totalAmount', () => {
+        component.totalFields.totalAmount.setValue(40);
+        component.detailsFields.controls[0].patchValue({ amount: 5 });
+        component.detailsFields.controls[1].patchValue({ amount: 15 });
+        component.detailsFields.controls[2].patchValue({ amount: 15 });
+        expect(component.detailsFields.controls[3].value.amount).toEqual(5);
+    });
 
     // it('should set the value of amount1 to value of totalAmount ', () => {
     //     component.totalFields.totalAmount.setValue(20);
