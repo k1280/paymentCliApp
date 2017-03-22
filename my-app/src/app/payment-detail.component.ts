@@ -40,6 +40,10 @@ export class PaymentDetailComponent implements OnInit {
             this.detailsFields.controls[0].patchValue({ amount: it });
         })
 
+        //   this.detailsFields.amount1.valueChanges.subscribe(it => {
+        //             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
+        //         })
+
         //code for passing the rest of the value to amount2 if we will change amount1
         this.partAmountForm = this.formBuilder.group({
             detailsFields: this.formBuilder.array([])
@@ -47,17 +51,15 @@ export class PaymentDetailComponent implements OnInit {
         this.addSubpayment();
         this.addSubpayment();
         this.addSubpayment();
-
     }
 
     addSubpayment(): void {
         const item = this.formBuilder.group({
             paymentPurpose: new FormControl(''),
-            amount: new FormControl('')
+            amount: new FormControl(0)
         });
         this.detailsFields.push(item);
     }
-
 
     //TODO hmm.. addSubpayment - subscribe??? Function to set values in inputs and display other inputs if necessary??
 
