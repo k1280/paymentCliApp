@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   template: `
   <h1 class="col-md-12">{{title}}</h1> 
   <app-payment-detail></app-payment-detail>
-  <additional-detail-fields></additional-detail-fields>
   `
 })
 export class AppComponent {
