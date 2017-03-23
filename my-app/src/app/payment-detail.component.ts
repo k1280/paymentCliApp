@@ -1,3 +1,4 @@
+import { TotalAmount } from './data-model';
 import { totalmem } from 'os';
 import { Component, Input, OnInit } from '@angular/core';
 import { Customer } from './customer';
@@ -46,7 +47,6 @@ export class PaymentDetailComponent implements OnInit {
         this.addSubpayment();
         this.addSubpayment();
         this.addSubpayment();
-
     }
 
     addSubpayment(): void {
@@ -56,16 +56,12 @@ export class PaymentDetailComponent implements OnInit {
             amount: amountInput
         });
         this.detailsFields.push(item);
- //console.log(this.detailsFields);
-            console.log(this.detailsFields.controls[0]);
-            console.log(this.detailsFields.controls[1]);
-            console.log(this.detailsFields.controls[2]);
-            console.log(this.detailsFields.at(0));
+        console.log(this.detailsFields.at(0));
+
         amountInput.valueChanges.subscribe(it => {
-            console.log(this.detailsFields);
-            console.log(this.detailsFields.controls[0]['amount']);
-            this.detailsFields.controls[1]['amount'].setValue(this.totalFields.totalAmount.value - this.detailsFields.controls[0]['amount'].value);
-            //setValue(this.totalFields.totalAmount.value - this.detailsFields.controls[0]['amount'].value); <- Cannot read property 'setValue' of undefined
+            var remainingAmount = 10;
+            this.detailsFields.at(1).patchValue({ amount: remainingAmount }, { emitEvent: false });
+            //emitEvent = false
         });
 
 
@@ -74,7 +70,6 @@ export class PaymentDetailComponent implements OnInit {
     //   this.detailsFields.amount1.valueChanges.subscribe(it => {
     //             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
     //         })
-    //TODO addSubpayment - subscribe; Function to set values in inputs and display other inputs if necessary
 
     @Input()
     customer: Customer = new Customer();
