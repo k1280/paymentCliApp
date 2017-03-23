@@ -35,17 +35,10 @@ export class PaymentDetailComponent implements OnInit {
     // III. adding validators
     ngOnInit() {
         this.totalAmountForm = this.formBuilder.group(this.totalFields);
-        //this.partAmountForm = this.formBuilder.group(this.detailsFields);
 
         this.totalFields.totalAmount.valueChanges.subscribe(it => {
             this.detailsFields.controls[0].patchValue({ amount: it });
         })
-
-        //   this.detailsFields.value.amount.valueChanges.subscribe(it => {
-        //             this.detailsFields.value.amount.setValue(this.totalFields.totalAmount.value - this.detailsFields.value.amount);
-        //         })
-
-        //this.partAmountForm.valueChanges.subscribe(it => {}) no! ADDSUBPAYMENT?
 
         this.partAmountForm = this.formBuilder.group({
             detailsFields: this.formBuilder.array([])
@@ -57,13 +50,30 @@ export class PaymentDetailComponent implements OnInit {
     }
 
     addSubpayment(): void {
+        const amountInput = new FormControl(0);
         const item = this.formBuilder.group({
             paymentPurpose: new FormControl(''),
-            amount: new FormControl(0)
+            amount: amountInput
         });
         this.detailsFields.push(item);
-    }
+ //console.log(this.detailsFields);
+            console.log(this.detailsFields.controls[0]);
+            console.log(this.detailsFields.controls[1]);
+            console.log(this.detailsFields.controls[2]);
+            console.log(this.detailsFields.at(0));
+        amountInput.valueChanges.subscribe(it => {
+            console.log(this.detailsFields);
+            console.log(this.detailsFields.controls[0]['amount']);
+            this.detailsFields.controls[1]['amount'].setValue(this.totalFields.totalAmount.value - this.detailsFields.controls[0]['amount'].value);
+            //setValue(this.totalFields.totalAmount.value - this.detailsFields.controls[0]['amount'].value); <- Cannot read property 'setValue' of undefined
+        });
 
+
+    }
+    //old approach
+    //   this.detailsFields.amount1.valueChanges.subscribe(it => {
+    //             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
+    //         })
     //TODO addSubpayment - subscribe; Function to set values in inputs and display other inputs if necessary
 
     @Input()
