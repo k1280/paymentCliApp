@@ -42,7 +42,7 @@ describe('PaymentDetailComponent', () => {
         expect(component.totalFields.totalAmount.value).toEqual(component.detailsFields.controls[0].value.amount);
     });
 
-    xit('should keep sum of subpayments equal to total amount', () => {
+    it('should keep sum of subpayments equal to total amount', () => {
         component.totalFields.totalAmount.setValue(20);
         component.detailsFields.controls[0].patchValue({ amount: 5 });
         expect(component.detailsFields.controls[1].value.amount).toEqual(15);

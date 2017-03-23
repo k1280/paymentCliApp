@@ -8,8 +8,7 @@ import { AdditionalDetailFieldsComponent } from './additional-detail-fields.comp
 
 @Component({
     selector: 'app-payment-detail',
-    templateUrl: 'payment-detail.component.html',
-    inputs: ['name', 'surname', 'date', 'totalAmount', 'amount'] //???
+    templateUrl: 'payment-detail.component.html'
 })
 
 //I. form model for template
@@ -56,15 +55,14 @@ export class PaymentDetailComponent implements OnInit {
             amount: amountInput
         });
         this.detailsFields.push(item);
-        console.log(this.detailsFields.at(0));
+        //console.log(this.detailsFields.at(0));
 
         amountInput.valueChanges.subscribe(it => {
-            var remainingAmount = 10;
+            var remainingAmount = 15;
             this.detailsFields.at(1).patchValue({ amount: remainingAmount }, { emitEvent: false });
             //emitEvent = false
         });
-
-
+        //this.totalFields.totalAmount.value - this.detailsFields.controls[0]['amount'].value
     }
     //old approach
     //   this.detailsFields.amount1.valueChanges.subscribe(it => {
