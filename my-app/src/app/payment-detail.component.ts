@@ -37,7 +37,7 @@ export class PaymentDetailComponent implements OnInit {
         this.totalAmountForm = this.formBuilder.group(this.totalFields);
 
         this.totalFields.totalAmount.valueChanges.subscribe(it => {
-            this.detailsFields.controls[0].patchValue({ amount: it });
+            this.detailsFields.controls[0].patchValue({ amount: it }, { emitEvent: false });
         })
 
         this.partAmountForm = this.formBuilder.group({
@@ -58,9 +58,11 @@ export class PaymentDetailComponent implements OnInit {
         //console.log(this.detailsFields.at(0));
 
         amountInput.valueChanges.subscribe(it => {
-            var remainingAmount = 15;
-            this.detailsFields.at(1).patchValue({ amount: remainingAmount }, { emitEvent: false });
-            //emitEvent = false
+            if (this.detailsFields.controls[0].value.amount != this.totalFields.totalAmount.value) {
+                var remainingAmount = (this.totalFields.totalAmount.value - this.detailsFields.controls[0].value.amount);
+                this.detailsFields.at(1).patchValue({ amount: remainingAmount }, { emitEvent: false });
+            }
+            //emitEvent = false, by default it is true
         });
         //this.totalFields.totalAmount.value - this.detailsFields.controls[0]['amount'].value
     }
