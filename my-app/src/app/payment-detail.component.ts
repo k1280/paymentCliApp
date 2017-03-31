@@ -36,13 +36,14 @@ export class PaymentDetailComponent implements OnInit {
     ngOnInit() {
         this.totalAmountForm = this.formBuilder.group(this.totalFields);
 
-        this.totalFields.totalAmount.valueChanges.subscribe(it => {
-            this.detailsFields.controls[0].patchValue({ amount: it }, { emitEvent: false });
+        this.totalFields.totalAmount.valueChanges.subscribe(inputValueForAmount=> {
+            this.detailsFields.controls[0].patchValue({ amount: inputValueForAmount}, { emitEvent: false });
         })
 
         this.partAmountForm = this.formBuilder.group({
             detailsFields: this.formBuilder.array([])
         })
+
         this.addSubpayment();
         this.addSubpayment();
         this.addSubpayment();
@@ -56,11 +57,16 @@ export class PaymentDetailComponent implements OnInit {
         });
         this.detailsFields.push(item);
         //console.log(this.detailsFields.at(0));
+        //console.log(this.detailsFields.controls[0].value.amount);
 
-        amountInput.valueChanges.subscribe(it => {
-            if (this.detailsFields.controls[0].value.amount != this.totalFields.totalAmount.value) {
-                var remainingAmount = (this.totalFields.totalAmount.value - this.detailsFields.controls[0].value.amount);
-                this.detailsFields.at(1).patchValue({ amount: remainingAmount }, { emitEvent: false });
+        amountInput.valueChanges.subscribe(inputValueForAmount=> {
+            
+            if (inputValueForAmount.amount  != this.totalFields.totalAmount.value) {
+                var remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
+                console.log(remainingAmount); //15 amount[1]
+                console.log(inputValueForAmount); //5 amount[0]
+                console.log(inputValueForAmount.amount);
+                this.detailsFields.controls[1].patchValue({ amount: remainingAmount }, { emitEvent: false });
             }
             //emitEvent = false, by default it is true
         });
