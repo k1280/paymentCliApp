@@ -70,12 +70,7 @@ export class PaymentDetailComponent implements OnInit {
             }
             //emitEvent = false, by default it is true
         });
-        //this.totalFields.totalAmount.value - this.detailsFields.controls[0]['amount'].value
     }
-    //old approach
-    //   this.detailsFields.amount1.valueChanges.subscribe(it => {
-    //             this.detailsFields.amount2.setValue(this.totalFields.totalAmount.value - this.detailsFields.amount1.value);
-    //         })
 
     @Input()
     customer: Customer = new Customer();
