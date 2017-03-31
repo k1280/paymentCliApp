@@ -24,7 +24,7 @@ export class PaymentDetailComponent implements OnInit {
         name: ['James', Validators.required],
         surname: ['Dean', Validators.required],
         date: '',
-        totalAmount: new FormControl(0)
+        totalAmount: new FormControl(100)
     };
     get detailsFields(): FormArray {
         return <FormArray>this.partAmountForm.get('detailsFields');
@@ -36,20 +36,19 @@ export class PaymentDetailComponent implements OnInit {
     ngOnInit() {
         this.totalAmountForm = this.formBuilder.group(this.totalFields);
 
-        this.totalFields.totalAmount.valueChanges.subscribe(inputValueForAmount=> {
-            this.detailsFields.controls[0].patchValue({ amount: inputValueForAmount}, { emitEvent: false });
+        this.totalFields.totalAmount.valueChanges.subscribe(inputValueForAmount => {
+            this.detailsFields.controls[0].patchValue({ amount: inputValueForAmount }, { emitEvent: false });
         })
 
         this.partAmountForm = this.formBuilder.group({
             detailsFields: this.formBuilder.array([])
         })
 
-        this.addSubpayment();
-        this.addSubpayment();
-        this.addSubpayment();
+        this.addSubpayment('water', 10);
+        this.addSubpayment('gas', 10);
+        this.addSubpayment('electricity', 10);
     }
-
-    addSubpayment(): void {
+    addSubpayment(defaultPurpose, defaultAmount): void {
         const amountInput = new FormControl(0);
         const item = this.formBuilder.group({
             paymentPurpose: new FormControl(''),
@@ -58,18 +57,26 @@ export class PaymentDetailComponent implements OnInit {
         this.detailsFields.push(item);
         //console.log(this.detailsFields.at(0));
         //console.log(this.detailsFields.controls[0].value.amount);
+        //var remainingAmount
+        //========================================================================================================
+        // amountInput.valueChanges.subscribe(inputValueForAmount => {
+        // if (inputValueForAmount != this.totalFields.totalAmount.value) {
+        //     var remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
+        //     console.log(remainingAmount); //15 amount[1]
+        //     console.log(inputValueForAmount); //5 amount[0]
+        //     this.detailsFields.controls[2].patchValue({ amount: remainingAmount }, { emitEvent: false });
+        // }
 
-        amountInput.valueChanges.subscribe(inputValueForAmount=> {
-            
-            if (inputValueForAmount.amount  != this.totalFields.totalAmount.value) {
-                var remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
-                console.log(remainingAmount); //15 amount[1]
-                console.log(inputValueForAmount); //5 amount[0]
-                console.log(inputValueForAmount.amount);
-                this.detailsFields.controls[1].patchValue({ amount: remainingAmount }, { emitEvent: false });
-            }
-            //emitEvent = false, by default it is true
-        });
+        // STUPID!!!! if (inputValueForAmount != remainingAmount) {
+        //     remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
+        //     console.log(remainingAmount); //10 amount[2]
+        //     console.log(inputValueForAmount); //15 amount[1]
+        //     //console.log(inputValueForAmount.amount);
+        //     this.detailsFields.controls[2].patchValue({ amount: remainingAmount }, { emitEvent: false });
+        // }
+        //emitEvent = false, by default it is true
+        //});
+        //========================================================================================================
     }
 
     @Input()
