@@ -24,7 +24,7 @@ export class PaymentDetailComponent implements OnInit {
         name: ['James', Validators.required],
         surname: ['Dean', Validators.required],
         date: '',
-        totalAmount: new FormControl(100)
+        totalAmount: new FormControl(0)
     };
     get detailsFields(): FormArray {
         return <FormArray>this.partAmountForm.get('detailsFields');
@@ -44,28 +44,34 @@ export class PaymentDetailComponent implements OnInit {
             detailsFields: this.formBuilder.array([])
         })
 
-        this.addSubpayment('water', 10);
-        this.addSubpayment('gas', 10);
-        this.addSubpayment('electricity', 10);
+        this.addSubpayment();
+        this.addSubpayment();
+        this.addSubpayment();
     }
-    addSubpayment(defaultPurpose, defaultAmount): void {
+    addSubpayment(): void {
         const amountInput = new FormControl(0);
         const item = this.formBuilder.group({
             paymentPurpose: new FormControl(''),
             amount: amountInput
         });
         this.detailsFields.push(item);
-        //console.log(this.detailsFields.at(0));
-        //console.log(this.detailsFields.controls[0].value.amount);
-        //var remainingAmount
-        //========================================================================================================
-        // amountInput.valueChanges.subscribe(inputValueForAmount => {
-        // if (inputValueForAmount != this.totalFields.totalAmount.value) {
-        //     var remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
-        //     console.log(remainingAmount); //15 amount[1]
-        //     console.log(inputValueForAmount); //5 amount[0]
-        //     this.detailsFields.controls[2].patchValue({ amount: remainingAmount }, { emitEvent: false });
-        // }
+        console.log(this.detailsFields.at(0));
+        console.log(this.detailsFields.controls[0].value.amount);
+        var remainingAmount;
+
+        amountInput.valueChanges.subscribe(inputValueForAmount => {
+            if (inputValueForAmount != this.totalFields.totalAmount.value) {
+                var remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
+
+                this.detailsFields.controls[1].patchValue({ amount: remainingAmount }, { emitEvent: false });
+                for (var i = 0, length = this.detailsFields.controls.length; i < length; i += 1) {
+                    console.log(this.detailsFields.controls[i].value.amount);
+                    // if (i === ){
+                    //     console.log(inputValueForAmount);
+                    // } else { }
+                }
+            }
+        });
 
         // STUPID!!!! if (inputValueForAmount != remainingAmount) {
         //     remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
