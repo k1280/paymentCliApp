@@ -68,10 +68,12 @@ export class PaymentDetailComponent implements OnInit {
 
                 this.detailsFields.controls[1].patchValue({ amount: remainingAmount }, { emitEvent: false });
 
-                for (var i = 0, length = this.detailsFields.controls.length; i < length; i += 1) {
+                for (var i = 0, sum = 0, length = this.detailsFields.controls.length; i < length; i += 1) {
                     console.log(this.detailsFields.controls[i].value.amount);
-
-
+                    sum += this.detailsFields.controls[i].value.amount;
+                    if (this.totalAmountForm.controls['totalAmount']['_value'] > sum) {
+                        console.log('hurra :D');
+                    }
                     //total += inputValueForAmount  lub controls[i]
                 }
             }
