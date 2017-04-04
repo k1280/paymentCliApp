@@ -35,8 +35,8 @@ export class PaymentDetailComponent implements OnInit {
     // III. adding validators
     ngOnInit() {
         this.totalAmountForm = this.formBuilder.group(this.totalFields);
-
         this.totalFields.totalAmount.valueChanges.subscribe(inputValueForAmount => {
+            console.log(inputValueForAmount)
             this.detailsFields.controls[0].patchValue({ amount: inputValueForAmount }, { emitEvent: false });
         })
 
@@ -55,23 +55,29 @@ export class PaymentDetailComponent implements OnInit {
             amount: amountInput
         });
         this.detailsFields.push(item);
-        console.log(this.detailsFields.at(0));
-        console.log(this.detailsFields.controls[0].value.amount);
+        // console.log(this.detailsFields.at(0));
+        // console.log(this.detailsFields.controls[0].value.amount);
         var remainingAmount;
 
         amountInput.valueChanges.subscribe(inputValueForAmount => {
+            console.log(inputValueForAmount)
+            console.log(this.detailsFields)
+            console.log(this.detailsFields.controls)
             if (inputValueForAmount != this.totalFields.totalAmount.value) {
                 var remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
 
                 this.detailsFields.controls[1].patchValue({ amount: remainingAmount }, { emitEvent: false });
+
                 for (var i = 0, length = this.detailsFields.controls.length; i < length; i += 1) {
                     console.log(this.detailsFields.controls[i].value.amount);
-                    // if (i === ){
-                    //     console.log(inputValueForAmount);
-                    // } else { }
+
+
+                    //total += inputValueForAmount  lub controls[i]
                 }
             }
         });
+
+
 
         // STUPID!!!! if (inputValueForAmount != remainingAmount) {
         //     remainingAmount = (this.totalFields.totalAmount.value - inputValueForAmount);
